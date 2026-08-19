@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Find your next memorable adventure together." />
+    <title>Random Adventure Generator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="."><span class="brand-mark">RA</span><span>Random Adventure</span></a>
+        <button class="saved-link" id="savedToggle" type="button"><span aria-hidden="true">&#9825;</span> Saved <span class="saved-count" id="savedCount">0</span></button>
+      </header>
+
+      <section class="hero">
+        <p class="eyebrow">Make a little room for the unexpected</p>
+        <h1>Where will the day<br /><em>take you?</em></h1>
+        <p class="hero-copy">Tell us the shape of your free time. We'll turn it into a handful of plans worth saying yes to.</p>
+      </section>
+
+      <section class="generator-layout">
+        <form class="controls" id="adventureForm">
+          <div class="section-label"><span>01</span> Set the scene</div>
+          <label class="field-label" for="location">Starting from <span class="optional">optional</span></label>
+          <div class="input-wrap"><span aria-hidden="true">&#9906;</span><input id="location" name="location" placeholder="A city, neighborhood, or leave blank" /></div>
+
+          <label class="field-label" for="places">Places already on your list <span class="optional">optional</span></label>
+          <input class="text-input" id="places" name="places" placeholder="e.g. the riverside, a bookshop" />
+
+          <div class="section-label second"><span>02</span> Find your rhythm</div>
+          <label class="field-label" for="duration">Time available</label>
+          <select class="text-input" id="duration" name="duration">
+            <option>A few hours</option><option>Half a day</option><option>Full day</option><option>A whole weekend</option>
+          </select>
+          <label class="field-label" for="budget">Maximum budget <span class="optional">per person</span></label>
+          <div class="budget-input"><span>$</span><input id="budget" name="budget" type="number" min="0" value="60" /></div>
+
+          <fieldset>
+            <legend>Energy level</legend>
+            <div class="pill-group"><label><input type="radio" name="energy" value="Low-key" checked /><span>Low-key</span></label><label><input type="radio" name="energy" value="Somewhere in the middle" /><span>Balanced</span></label><label><input type="radio" name="energy" value="High energy" /><span>Go big</span></label></div>
+          </fieldset>
+          <fieldset>
+            <legend>What sounds good?</legend>
+            <div class="pill-group"><label><input type="checkbox" name="style" value="outdoors" checked /><span>Outdoors</span></label><label><input type="checkbox" name="style" value="food and culture" /><span>Food + culture</span></label><label><input type="checkbox" name="style" value="creative and playful" /><span>Make + play</span></label><label><input type="checkbox" name="style" value="surprising" /><span>Unexpected</span></label></div>
+          </fieldset>
+          <label class="field-label" for="prompt">A little more direction <span class="optional">optional</span></label>
+          <textarea id="prompt" name="prompt" rows="2" placeholder="A birthday, a first date, no walking..."></textarea>
+          <button class="generate-button" type="submit"><span>Generate adventures</span><span aria-hidden="true">&#8594;</span></button>
+        </form>
+
+        <section class="results-area" aria-live="polite">
+          <div class="results-heading"><div><p class="eyebrow">Your shortlist</p><h2 id="resultsTitle">A few places to begin</h2></div><button class="reroll-button" id="reroll" type="button" title="Generate a new shortlist">&#8635; Reroll</button></div>
+          <div id="results" class="results"></div>
+        </section>
+      </section>
+    </main>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
